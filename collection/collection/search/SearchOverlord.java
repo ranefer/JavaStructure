@@ -1,4 +1,4 @@
-package search;
+package collection.search;
 
 import java.util.HashMap;
 

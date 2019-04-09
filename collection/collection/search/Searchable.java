@@ -1,4 +1,4 @@
-package search;
+package collection.search;
 
 public abstract class Searchable<T> {
 	public String name;

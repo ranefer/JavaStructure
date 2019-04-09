@@ -2,7 +2,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import DoublyLinkedList.DoublyLinkedList;
+import collection.DoublyLinkedList.DoublyLinkedList;
 
 public class DoublyLinkedList_t {
 

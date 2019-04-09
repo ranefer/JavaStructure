@@ -1,11 +1,11 @@
-package DoublyLinkedList;
+package collection.DoublyLinkedList;
 
 import java.util.Comparator;
 import java.util.Iterator;
 
-import list.List;
 import node.DoublyLinkedNode;
 import collection.Collection;
+import collection.list.List;
 
 public class DoublyLinkedList<T extends Comparable<T>> implements List<T>,
 		Iterable<T> {

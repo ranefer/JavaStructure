@@ -1,6 +1,6 @@
 package node;
 
-import search.Searchable;
+import collection.search.Searchable;
 
 public class SearchNode<T> extends Searchable<T> implements Comparable<SearchNode> {
 	SearchNode parent = null;
