@@ -107,7 +107,14 @@ public abstract class ACollectionTest {
 	}
 
 	@Test
-	public void getAllTest() {
+	public void copyTest() {
+		Collection<String> copy = collection.copy();
+		assert (copy.equals(collection));
+		assertEquals(copy.toString(), collection.toString());
+	}
+
+	@Test
+	public void equalsTest() {
 		fail();
 	}
 

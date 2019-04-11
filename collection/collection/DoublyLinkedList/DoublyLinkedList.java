@@ -175,12 +175,27 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>, Itera
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		Iterator<T> it = iterator();
+		if (o.getClass().equals(this.getClass())) {
+			Iterator<T> oo = ((DoublyLinkedList<T>) o).iterator();
+			while (it.hasNext()) {
+				if (!oo.hasNext() || !oo.next().equals(it.next())) {
+					return false;
+				}
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
 	public Iterator<T> iterator() {
-		// TODO Auto-generated method stub
 		return new Iterator_dll();
 	}
 
-	public class Iterator_dll implements Iterator<T> {
+	private class Iterator_dll implements Iterator<T> {
 		DoublyLinkedNode<T> p;
 
 		public Iterator_dll() {
@@ -189,8 +204,7 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>, Itera
 
 		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub
-			return p.next != null && p.next != preHead && p.next != postTail;
+			return p.next != postTail;
 		}
 
 		@Override
