@@ -1,6 +1,9 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.util.Arrays;
+import java.util.Iterator;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,8 +34,11 @@ public abstract class ACollectionTest {
 	@Test
 	public void addTest0() {
 		String expected = "(";
-		for (String d : data) {
-			expected += d;
+		Iterator<String> iterator = Arrays.stream(data).iterator();
+		while (iterator.hasNext()) {
+			expected += iterator.next();
+			if (iterator.hasNext())
+				expected += ",";
 		}
 		expected += ")";
 
