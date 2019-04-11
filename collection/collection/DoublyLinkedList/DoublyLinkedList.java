@@ -96,10 +96,10 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>, Itera
 	@Override
 	public boolean contains(T data) {
 		DoublyLinkedNode<T> front = this.preHead.next;
-		while (front != null && front.retrieveData().compareTo(data) != 0) {
+		while (front != this.postTail && front.retrieveData().compareTo(data) != 0) {
 			front = front.next;
 		}
-		return front != null;
+		return front != this.postTail;
 	}
 
 	@Override

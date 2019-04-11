@@ -13,4 +13,9 @@ public class DLLCollectionTest extends ACollectionTest {
 		return new String[] { "One", "Two", "Three", "Four", "Five" };
 	}
 
+	@Override
+	protected String[] setInvalidData() {
+		return new String[] { "Sean", "Paul", "Mike", "Debora", "Sarah" };
+	}
+
 }
