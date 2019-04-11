@@ -11,7 +11,7 @@ public interface Collection<T> extends Comparable<Collection<T>> {
 
 	public boolean contains(T data);
 
-	public Collection<T> getAll();
+	public Collection<T> copy();
 
 	public Collection<T> removeAll();
 

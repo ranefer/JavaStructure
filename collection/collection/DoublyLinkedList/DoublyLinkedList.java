@@ -106,7 +106,7 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>, Itera
 	}
 
 	@Override
-	public Collection<T> getAll() {
+	public Collection<T> copy() {
 		// TODO Auto-generated method stub
 		Collection<T> all = new DoublyLinkedList<T>();
 		for (T x : this) {
@@ -134,8 +134,8 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>, Itera
 	public int compareTo(Collection<T> o) {
 		int retVal = 0;
 		if ((retVal = this.length() - ((DoublyLinkedList<T>) o).length()) != 0) {
-			DoublyLinkedList<T> t = (DoublyLinkedList<T>) this.getAll();
-			DoublyLinkedList<T> oo = (DoublyLinkedList<T>) o.getAll();
+			DoublyLinkedList<T> t = (DoublyLinkedList<T>) this.copy();
+			DoublyLinkedList<T> oo = (DoublyLinkedList<T>) o.copy();
 			while (t.length() > 0) {
 				DoublyLinkedNode<T> ttemp = new DoublyLinkedNode<T>(t.removeFirst());
 				DoublyLinkedNode<T> otemp = new DoublyLinkedNode<T>(t.removeFirst());
