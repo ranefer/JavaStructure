@@ -6,8 +6,7 @@ import collection.DoublyLinkedList.DoublyLinkedList;
 
 public class DoublyLinkedList_t {
 
-	final String[] TEST_0 = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
-			"K", "L" };
+	final String[] TEST_0 = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
 
 	final String[] TEST_1 = { "\0", "\\", "\t" };
 
@@ -43,7 +42,7 @@ public class DoublyLinkedList_t {
 	/** public methods */
 	@Test
 	public void add_0() {
-		String result = "(ABCDEFGHIJKL)";
+		String result = "(A,B,C,D,E,F,G,H,I,J,K,L)";
 		DoublyLinkedList<String> dll = new DoublyLinkedList<String>();
 		for (int i = 0; i < TEST_0.length; i++) {
 			dll.add(TEST_0[i]);
@@ -64,7 +63,7 @@ public class DoublyLinkedList_t {
 
 	@Test
 	public void remove_T_0() {
-		String result_str = "(BCDEFGHIJKL)";
+		String result_str = "(B,C,D,E,F,G,H,I,J,K,L)";
 		int result_len = "BCDEFGHIJKL".length();
 		DoublyLinkedList<String> dll = this.createNewRep(TEST_0);
 		dll.remove("A");
@@ -90,7 +89,7 @@ public class DoublyLinkedList_t {
 	@Test
 	public void contains_0() {
 		DoublyLinkedList<String> dll = this.createNewRep(TEST_0);
-		String result = "(ABCDEFGHIJKL)";
+		String result = "(A,B,C,D,E,F,G,H,I,J,K,L)";
 		assert (dll.contains("L"));
 		assertEquals(result, dll.toString());
 	}
@@ -134,7 +133,7 @@ public class DoublyLinkedList_t {
 
 	@Test
 	public void toString_0() {
-		String result = "(ABCDEFGHIJKL)";
+		String result = "(A,B,C,D,E,F,G,H,I,J,K,L)";
 		DoublyLinkedList<String> dll = this.createNewRep(TEST_0);
 
 		assertEquals(result, dll.toString());
@@ -143,7 +142,7 @@ public class DoublyLinkedList_t {
 
 	@Test
 	public void toString_1() {
-		String result = "(\0\\\t)";
+		String result = "(\0,\\,\t)";
 		DoublyLinkedList<String> dll = this.createNewRep(TEST_1);
 
 		assertEquals(result, dll.toString());

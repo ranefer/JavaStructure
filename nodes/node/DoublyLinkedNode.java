@@ -1,7 +1,6 @@
 package node;
 
-public class DoublyLinkedNode<T extends Comparable<T>> implements
-		Comparable<DoublyLinkedNode<T>> {
+public class DoublyLinkedNode<T extends Comparable<T>> implements Comparable<DoublyLinkedNode<T>> {
 	T data;
 	public DoublyLinkedNode<T> next;
 	public DoublyLinkedNode<T> previous;
@@ -19,7 +18,6 @@ public class DoublyLinkedNode<T extends Comparable<T>> implements
 
 	@Override
 	public int compareTo(DoublyLinkedNode<T> o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return data.compareTo(o.retrieveData());
 	}
 }

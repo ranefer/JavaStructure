@@ -3,12 +3,11 @@ package collection.DoublyLinkedList;
 import java.util.Comparator;
 import java.util.Iterator;
 
-import node.DoublyLinkedNode;
 import collection.Collection;
 import collection.list.List;
+import node.DoublyLinkedNode;
 
-public class DoublyLinkedList<T extends Comparable<T>> implements List<T>,
-		Iterable<T> {
+public class DoublyLinkedList<T extends Comparable<T>> implements List<T>, Iterable<T> {
 
 	private DoublyLinkedNode<T> preHead;
 	private DoublyLinkedNode<T> postTail;
@@ -39,8 +38,7 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>,
 	private boolean moveTo(T data) {
 		assert this.length > 0 : "This must not be empty";
 		this.pointer = this.preHead.next;
-		while (this.pointer != null
-				&& this.pointer.retrieveData().compareTo(data) != 0) {
+		while (this.pointer != null && this.pointer.retrieveData().compareTo(data) != 0) {
 			this.pointer = this.pointer.next;
 		}
 		return this.pointer != null;
@@ -72,8 +70,7 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>,
 	}
 
 	public void remove() {
-		if (this.length > 0 && this.pointer != this.preHead
-				&& this.pointer != this.postTail) {
+		if (this.length > 0 && this.pointer != this.preHead && this.pointer != this.postTail) {
 			this.pointer.next.previous = this.pointer.previous;
 			this.pointer.previous.next = this.pointer.next;
 			this.pointer.next = null;
@@ -98,9 +95,8 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>,
 
 	@Override
 	public boolean contains(T data) {
-		DoublyLinkedNode<T> front = this.preHead;
-		while (front.retrieveData().compareTo(data) != 0
-				&& this.pointer != null) {
+		DoublyLinkedNode<T> front = this.preHead.next;
+		while (front != null && front.retrieveData().compareTo(data) != 0) {
 			front = front.next;
 		}
 		return front != null;
@@ -138,10 +134,8 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>,
 			DoublyLinkedList<T> t = (DoublyLinkedList<T>) this.getAll();
 			DoublyLinkedList<T> oo = (DoublyLinkedList<T>) o.getAll();
 			while (t.length() > 0) {
-				DoublyLinkedNode<T> ttemp = new DoublyLinkedNode<T>(
-						t.removeFirst());
-				DoublyLinkedNode<T> otemp = new DoublyLinkedNode<T>(
-						t.removeFirst());
+				DoublyLinkedNode<T> ttemp = new DoublyLinkedNode<T>(t.removeFirst());
+				DoublyLinkedNode<T> otemp = new DoublyLinkedNode<T>(t.removeFirst());
 
 				if ((retVal = ttemp.compareTo(otemp)) != 0) {
 					return retVal;
@@ -169,6 +163,9 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>,
 		Iterator<T> it = iterator();
 		while (it.hasNext()) {
 			rep += it.next().toString();
+			if (it.hasNext()) {
+				rep += ",";
+			}
 		}
 		rep += ")";
 		return rep;
