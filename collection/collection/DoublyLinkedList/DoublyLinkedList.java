@@ -38,10 +38,10 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>, Itera
 	private boolean moveTo(T data) {
 		assert this.length > 0 : "This must not be empty";
 		this.pointer = this.preHead.next;
-		while (this.pointer != null && this.pointer.retrieveData().compareTo(data) != 0) {
+		while (this.pointer != postTail && this.pointer.retrieveData().compareTo(data) != 0) {
 			this.pointer = this.pointer.next;
 		}
-		return this.pointer != null;
+		return this.pointer != postTail;
 	}
 
 	@Override
@@ -56,27 +56,30 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T>, Itera
 	}
 
 	@Override
-	public void remove(T data) {
-		// TODO Auto-generated method stub
-		if (this.length > 0 && this.moveTo(data)) {
-			DoublyLinkedNode<T> removed = this.pointer;
-			this.pointer = this.pointer.next;
-			removed.next.previous = removed.previous;
-			removed.previous.next = removed.next;
-			removed.next = null;
-			removed.previous = null;
+	public boolean remove(T data) {
+		boolean result = false;
+		if (this.length > 0 && (result = this.moveTo(data))) {
+			this.pointer.next.previous = this.pointer.previous;
+			this.pointer.previous.next = this.pointer.next;
+			this.pointer.next = null;
+			this.pointer.previous = null;
 			this.length--;
+			this.pointer = this.pointer.next;
 		}
+		return result;
 	}
 
-	public void remove() {
+	public T remove() {
+		T result = null;
 		if (this.length > 0 && this.pointer != this.preHead && this.pointer != this.postTail) {
+			result = this.pointer.retrieveData();
 			this.pointer.next.previous = this.pointer.previous;
 			this.pointer.previous.next = this.pointer.next;
 			this.pointer.next = null;
 			this.pointer.previous = null;
 			this.length--;
 		}
+		return result;
 	}
 
 	@Override

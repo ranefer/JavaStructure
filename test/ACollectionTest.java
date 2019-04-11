@@ -60,7 +60,19 @@ public abstract class ACollectionTest {
 
 	@Test
 	public void remove() {
-		fail();
+		while (iterator.hasNext()) {
+			String expected = iterator.next();
+			assert (collection.remove(expected));
+
+		}
+	}
+
+	@Test
+	public void removeWrongItem() {
+		while (invalidIterator.hasNext()) {
+			String expected = invalidIterator.next();
+			assertFalse(collection.remove(expected));
+		}
 	}
 
 	@Test
