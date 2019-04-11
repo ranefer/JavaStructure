@@ -13,6 +13,7 @@ import collection.Collection;
 public abstract class ACollectionTest {
 
 	Collection<String> collection;
+	Iterator<String> iterator;
 	String[] data;
 
 	abstract protected Collection<String> setCollection();
@@ -23,6 +24,11 @@ public abstract class ACollectionTest {
 	public void setUp() {
 		this.collection = setCollection();
 		this.data = setData();
+		this.iterator = Arrays.stream(data).iterator();
+
+		for (int i = 0; i < data.length; i++) {
+			collection.add(data[i]);
+		}
 	}
 
 	@After
@@ -34,17 +40,12 @@ public abstract class ACollectionTest {
 	@Test
 	public void addTest0() {
 		String expected = "(";
-		Iterator<String> iterator = Arrays.stream(data).iterator();
 		while (iterator.hasNext()) {
 			expected += iterator.next();
 			if (iterator.hasNext())
 				expected += ",";
 		}
 		expected += ")";
-
-		for (int i = 0; i < data.length; i++) {
-			collection.add(data[i]);
-		}
 		assertEquals(expected, collection.toString());
 	}
 
@@ -55,7 +56,16 @@ public abstract class ACollectionTest {
 
 	@Test
 	public void removeFirstTest() {
-		fail();
+		String expected = "(";
+		iterator.next(); // remove first
+		while (iterator.hasNext()) {
+			expected += iterator.next();
+			if (iterator.hasNext())
+				expected += ",";
+		}
+		expected += ")";
+		collection.removeFirst();
+		assertEquals(expected, collection.toString());
 	}
 
 	@Test
